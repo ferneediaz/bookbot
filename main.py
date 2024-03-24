@@ -10,9 +10,8 @@ def main():
     print()
 
     for item in chars_sorted_list:
-        if not item["char"].isalpha():
-            continue
-        print(f"The '{item['char']}' character was found {item['num']} times")
+        if item["char"].isalpha():
+            print(f"The '{item['char']}' character was found {item['num']} times")
 
     print("--- End report ---")
 
@@ -38,10 +37,11 @@ def get_chars_dict(text):
     chars = {}
     for c in text:
         lowered = c.lower()
-        if lowered in chars:
-            chars[lowered] += 1
-        else:
-            chars[lowered] = 1
+        if lowered.isalpha():
+            if lowered in chars:
+                chars[lowered] += 1
+            else:
+                chars[lowered] = 1
     return chars
 
 
